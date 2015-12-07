@@ -1,0 +1,37 @@
+extends ./layout.jade
+
+block content
+    section.call-to-action.text-center
+        .text-all
+            .container
+                br
+                br
+                form.form-signin(method='POST', action='/_setuser')
+                    h2.title One mission. Make you enjoy more your roomies.
+                    .row
+                        .col-xs-12.col-sm-6.col-md-6
+                            .form-group
+                                input#inputFirstName.form-control(type='text', name='firstname', placeholder='First Name', required='', autofocus='', tabindex='1')
+                        .col-xs-12.col-sm-6.col-md-6
+                            .form-group
+                                input#inputLastName.form-control(type='text', name='lastname', placeholder='Last Name', required='', autofocus='', tabindex='2')
+                    .form-group
+                        input#inputDisplayName.form-control(type='text', name='login', placeholder='Display Name', required='', autofocus='', tabindex='3')
+                    .form-group
+                        input#Inputemail.form-control(type='email', name='mail', placeholder='Email Address', required='', autofocus='', tabindex='4')
+                    .row
+                        .col-xs-12.col-sm-6.col-md-6
+                            .form-group
+                                input#inputPassword.form-control(type='password', name='pass', placeholder='Password', required='', autofocus='', tabindex='5')
+                        .col-xs-12.col-sm-6.col-md-6
+                            .form-group
+                                input#inputPasswordConfirm.form-control(type='password', placeholder='Password Confirm', required='', autofocus='', tabindex='6')
+                    .row
+                        .col-xs-4.col-sm-3.col-md-3
+                            button.btn.btn-lg.btn-primary.btn-block(type='submit') Register
+                .col-xs-8.col-sm-9.col-md-9
+                    | By clicking
+                    strong.label.label-primary Register
+                    | , you agree to the
+                    a(href='#', data-toggle='modal', data-target='#t_and_c_m') Terms and Conditions
+                    |  set out by this site, including our Cookie Use.

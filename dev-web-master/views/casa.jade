@@ -1,0 +1,35 @@
+extends ./layout.jade
+
+block content
+    header#head
+        .container
+            form(method="POST", action="/_editCasa/#{casa._id}")
+                - if (user._id == casa.admin)
+                    button.btn.btn-secondary(type='button', onclick="document.location.href = '/rmcasa/#{casa._id}'") delete
+                .heading-text
+                    h3
+                        .row
+                            .col-md-4.col-md-offset-4
+                                .form-group
+                                    - if(user._id == casa.admin)
+                                        input#house_name.form-control.input-lg(type='text', name='name', placeholder='House Name', tabindex='1', value="#{casa.name}")
+                                    - else
+                                        #house_name.form-control.input-lg(type='text', name='house_name', placeholder='House Name', tabindex='1', value="") #{casa.name}
+                    h4
+                        .row
+                            .col-md-4.col-md-offset-4
+                                .form-group
+                                    - if(user._id == casa.admin)
+                                        input#adress_name.form-control.input-lg(type='text', name='adress', placeholder='Adress Name', tabindex='1', value="#{casa.adress}")
+                                    - else
+                                        #adress_name.form-control.input-lg(type='text', name='adress_name', placeholder='Adress Name', tabindex='1', value="") #{casa.adress}
+                    h2(style="color: black;") Roomies:
+                    each val in users
+                        h3.row
+                            .text-center.col-md-offset-3.col-md-4(style="color: grey;") #{ val.login } : #{ val.firstname } #{ val.lastname }
+                            - if ((casa.admin == user._id || val._id == user._id) && val._id != casa.admin)
+                                a.col-md-1(href='/_rmuser/#{casa._id}/#{val._id}')
+                                    img(src='/images/delete.png')
+                    input(type="hidden", name='id', value='#{casa._id}')
+                    h5
+                        button.btn.btn-success(type='submit') Save

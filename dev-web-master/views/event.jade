@@ -1,0 +1,39 @@
+extends ./layout.jade
+
+block content
+    section.testimonial
+        .container
+            - if (user._id == event.admin)
+                button.btn.btn-secondary.center-block(type='button', onclick='document.location.href = "/rmevent/#{ event._id }"') Delete
+            .row
+                | &nbsp;
+            .row.list-group.list-group-item
+                .col-md-offset-1.col-md-4
+                    a
+                        h4.list-group-item-heading #{ event.name }
+                        p.list-group-item-text
+                            | #{ event.adress }
+                        p.list-group-item-text
+                            | #{ event.description }
+                .col-md-4
+                    h3(style="margin-top:0;") Guest List
+                    each val in users
+                        .row(style="color: grey;")
+                            .col-md-6 #{ val.login } : #{ val.firstname } #{ val.lastname }
+                            - if ((event.admin == user._id || val._id == user._id) && val._id != event.admin)
+                                a.col-md-1(href='/_rmevent/#{event._id}/#{val._id}')
+                                    img(src='/images/delete.png')
+                .col-md-3
+                    .row
+                        - if (-1 == accept.acceptence)
+                            button(type="button", class="btn btn-secondary", disabled="disabled") Nope
+                        - if (1 == accept.acceptence)
+                            button(type="button", class="btn btn-secondary", disabled="disabled") Yes
+                        - if (0 == accept.acceptence)
+                            .btn-group
+                                button.btn.btn-danger(type="button", onclick="document.location.href = '/accept/#{accept._id}/0'") Refuse
+                                button.btn.btn-success(type="button", onclick="document.location.href = '/accept/#{accept._id}/1'") Accept
+                    .row
+                        | Invited: #{acceTab[1]}
+                        | Accepted: #{acceTab[2]}
+                        | Resused: #{acceTab[0]}

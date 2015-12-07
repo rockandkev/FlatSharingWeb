@@ -1,0 +1,114 @@
+extends ./layout.jade
+
+block content
+    section.main-contents.container
+        form(method="POST", action="/_setevent")
+            h2.text-center.sub-texts Create your event!
+                .row
+                    .col-xs-12.col-sm-6.col-md-6
+                        .form-group
+                            input#first_name.form-control.input-lg(type='text', name='name', placeholder='Name of event', tabindex='1')
+                    .col-xs-12.col-sm-6.col-md-6
+                        .form-group
+                            input#place.form-control.input-lg(type='text', name='adress', placeholder='Place', tabindex='2')
+                .form-group
+                    input#description.form-control.input-lg(type='text', name='description', placeholder='Description', tabindex='3')
+                .form-group
+                    input#email.form-control.input-lg(type='text', name='need', placeholder='Need: Ballon, Alcohol, Potatoe...', tabindex='4')
+                .row
+                    .col-xs-3.col-sm-3.col-md-3
+                        .form-group
+                            .form-group
+                                label(for='sel1') Day
+                                    select(name="day")#sel1.form-control
+                                        option 1
+                                        option 2
+                                        option 3
+                                        option 4
+                                        option 5
+                                        option 6
+                                        option 7
+                                        option 8
+                                        option 9
+                                        option 10
+                                        option 11
+                                        option 12
+                                        option 13
+                                        option 14
+                                        option 15
+                                        option 16
+                                        option 17
+                                        option 18
+                                        option 19
+                                        option 20
+                                        option 21
+                                        option 22
+                                        option 23
+                                        option 24
+                                        option 25
+                                        option 26
+                                        option 27
+                                        option 28
+                                        option 29
+                                        option 30
+                                        option 31
+                    .col-xs-3.col-sm-3.col-md-3
+                        .form-group
+                            label(for='sel2') Month
+                                select(name="month")#sel2.form-control
+                                    option 1
+                                    option 2
+                                    option 3
+                                    option 4
+                                    option 5
+                                    option 6
+                                    option 7
+                                    option 8
+                                    option 9
+                                    option 10
+                                    option 11
+                                    option 12
+                    .col-xs-3.col-sm-3.col-md-3
+                        .form-group
+                            label(for='sel3') Year
+                                select(name="year")#sel3.form-control
+                                    option 2015
+                                    option 2016
+                    .col-xs-3.col-sm-3.col-md-3
+                        .form-group
+                            label(for='sel4') Hour
+                                select(name="hour")#sel4.form-control
+                                    option 0
+                                    option 1
+                                    option 2
+                                    option 3
+                                    option 4
+                                    option 5
+                                    option 6
+                                    option 7
+                                    option 8
+                                    option 9
+                                    option 10
+                                    option 11
+                                    option 12
+                                    option 13
+                                    option 14
+                                    option 15
+                                    option 16
+                                    option 17
+                                    option 18
+                                    option 19
+                                    option 10
+                                    option 21
+                                    option 22
+                                    option 23
+                .row Flatsharing
+                    each casa, id in casas
+                        - if (casa._id != avoid)
+                            .checkbox
+                                input(type='checkbox', name="casa#{ id }" value='#{casa._id}')
+                                | #{casa.name}
+                .row
+                    .col-xs-4.col-sm-3.col-md-3
+                        span.button-checkbox
+                            button.btn(type='submit', data-color='info', tabindex='7') Send

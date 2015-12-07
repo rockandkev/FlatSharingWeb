@@ -1,0 +1,28 @@
+extends ./layout.jade
+
+block content
+    section.main-contents.container
+        h2.text-center.sub-texts One mission. Make you enjoy more your roomies.
+        form(action='/_editUser/#{user._id}', method='POST').container
+            .row
+                .col-xs-12.col-sm-6.col-md-6
+                    .form-group
+                        input#first_name.form-control.input-lg(type='text', name='firstname', placeholder='First Name', tabindex='1', value="#{user.firstname}")
+                .col-xs-12.col-sm-6.col-md-6
+                    .form-group
+                        input#last_name.form-control.input-lg(type='text', name='lastname', placeholder='Last Name', tabindex='2', value="#{user.lastname}")
+            .form-group
+                input#display_name.form-control.input-lg(type='text', name='login', placeholder='Display Name', tabindex='3', value="#{user.login}")
+            .form-group
+                input#email.form-control.input-lg(type='email', name='mail', placeholder='Email Address', tabindex='4', value="#{user.mail}")
+            .row
+                .col-xs-12.col-sm-6.col-md-6
+                    .form-group
+                        input#password.form-control.input-lg(type='password', name='pass', placeholder='Password', tabindex='5', value="#{user.pass}")
+                .col-xs-12.col-sm-6.col-md-6
+                    .form-group
+                        input#password_confirmation.form-control.input-lg(type='password', name='password_confirmation', placeholder='Confirm Password', tabindex='6')
+            .row
+                .col-md-offset-5.col-md-2
+                    button.btn.btn-primary.text-center(type="submit", style="width: 100%") SAVE
+            input(type="hidden", name="id", value="#{user._id}")

@@ -1,0 +1,18 @@
+extends ./layout.jade
+
+block content
+    section.call-to-action.text-center
+        .text-all
+            .container
+                form.form-signin(method="POST", action="/_login")
+                    h2.form-signin-heading Sign in
+                    label.sr-only(for='mail') Login
+                    input#inputLogin.form-control(type='text', name="login", placeholder='Login', required='', autofocus='')
+                    label.sr-only(for='pass') Password
+                    input#inputPassword.form-control(type='password', name="pass", placeholder='Password', required='')
+                    .checkbox
+                        label
+                            input(type='checkbox', value='remember-me')
+                            |  Remember me
+                    button.btn.btn-lg.btn-primary.btn-block(type='submit') Sign in
+            // /container

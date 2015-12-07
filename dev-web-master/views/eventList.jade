@@ -1,0 +1,24 @@
+extends ./layout.jade
+
+block content
+    section.testimonial
+        .container
+            button.btn.btn-secondary.col-md-offset-5(type='button', onclick="document.location.href = '/eventCreate'") Create an event
+            - if (futu.length)
+                h3 Future events
+                each event in futu
+                    .list-group
+                        a.list-group-item(href='/event/#{ event._id }')
+                            h4.list-group-item-heading #{ event.name }
+                            p.list-group-item-text
+                                | #{ event.description }
+            - if (pass.length)
+                h3 Past events
+                each event in pass
+                    .list-group
+                        a.list-group-item(href='/event/#{ event._id }')
+                            h4.list-group-item-heading #{ event.name }
+                            p.list-group-item-text
+                                | #{ event.description }
+            - if (events.length == 0)
+                h1 No event incoming

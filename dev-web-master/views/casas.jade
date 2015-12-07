@@ -1,0 +1,13 @@
+extends ./layout.jade
+
+block content
+    .container
+        each casa, id in casas
+            .row
+              h3
+                a(href='/casa/#{casa._id}') #{casa.name}
+              p
+                | #{casa.adress}
+              .col-md-4.portfolio-item
+                a(href='/casa/#{casa._id}')
+                  img.img-responsive(src='/images/casas/#{casa.pic}', alt='')

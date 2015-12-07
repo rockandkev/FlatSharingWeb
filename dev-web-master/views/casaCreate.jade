@@ -1,0 +1,45 @@
+extends ./layout.jade
+
+block content
+    header#head
+        .container
+            .heading-text
+                h1
+                    // Split button
+                    .btn-group
+                        button.btn.btn-primary(type='button')
+                            | Search my casa
+                        button.btn.btn-primary.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                            span.caret
+                            span.sr-only Toggle Dropdown
+                        ul.dropdown-menu
+                            each casa in casas
+                                li
+                                    a(href='/_setCasa/#{casa._id}' ) #{casa.name}, #{casa.adress}
+                form(action="/_setCasa", method="POST", enctype="multipart/form-data")
+                    h2  Add Your House if you don't find it !
+                    h3
+                        .row
+                            .col-md-offset-4.col-md-4
+                                .form-group
+                                    input#house_name.form-control.input-lg(type='text', name='name', placeholder='House Name', tabindex='1')
+                    h4
+                        .row
+                            .col-md-offset-4.col-md-4
+                                .form-group
+                                    input#adress_name.form-control.input-lg(type='text', name='adress', placeholder='Adress Name', tabindex='1')
+                    h4
+                        .row
+                            .col-md-offset-4.col-md-4
+                                .form-group
+                                    input#pic.form-control.input-lg(type='file', name='pic', placeholder='Select img', tabindex='1')
+                    h5
+                        button.btn.btn-success(type='submit') Success
+            .fluid_container
+                #camera_wrap_4.camera_wrap.camera_emboss.pattern_1
+                    div(data-thumb='/images/slides/thumbs/img1.jpg', data-src='/images/slides/img2.jpg')
+                        h2 We develop.
+                    div(data-thumb='/images/slides/thumbs/img2.jpg', data-src='/images/slides/img4.jpg')
+                    div(data-thumb='/images/slides/thumbs/img3.jpg', data-src='/images/slides/img3.jpg')
+                // #camera_wrap_3
+            // .fluid_container

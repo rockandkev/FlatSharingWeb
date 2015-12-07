@@ -1,0 +1,83 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        meta(name='description', content='free-educational-responsive-web-template-webEdu')
+        title FS CO
+        link(rel='stylesheet', media='screen', href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,700')
+        link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+        link(rel='stylesheet', href='/stylesheets/font-awesome.min.css')
+        link(rel='stylesheet', href='/stylesheets/bootstrap-theme.css', media='screen')
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        link(id="camera-css", rel='stylesheet', href='/stylesheets/camera.css', type='text/css', media='all')
+    body
+        nav.navbar.navbar-default
+            .container-fluid
+                .navbar-header
+                    button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+                        span.sr-only Toggle navigation
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                    img(src='/images/logoflat.png', alt='logo', style='width:50px;height:50px;')
+                    a.navbar-brand(style='padding-left:30px;float: none;', href='#') Flat Sharing Connection
+                .collapse.navbar-collapse(id="bs-example-navbar-collapse-1")
+                    ul.nav.navbar-nav
+                        li
+                            a(href='/') Home
+                        li
+                            a(href='/casas') Houses
+                        li
+                            a(href='/event') Events
+                        - if (user)
+                            li
+                                a(href='/casa') My House
+                            li(style='right:100px;position:absolute')
+                                a(href='/user') #{user.login}
+                            li(style='right:0px;position:absolute')
+                                a(href='/_login') Logout
+                        - else
+                            li(style='right:0px;position:absolute')
+                                a(href='/userCreate') Register
+                            li(style='right:50px;position:absolute')
+                                a(href='/login') Login
+    block content
+        h1
+        | content
+    footer
+        .footer-section
+            .container
+                .navigation
+                    ul.pull-right
+                        li
+                            a(href='/') Home
+                        li
+                            a(href='/casas') House
+                        li
+                            a(href='/event') Events
+                        li
+                            a(href='/casas') My House
+    // JavaScript libs are placed at the end of the document so the pages load faster
+    script(src='/javascripts/modernizr-latest.js')
+    script(type='text/javascript', src='/javascripts/jquery.min.js')
+    script(type='text/javascript', src='/javascripts/jquery.mobile.customized.min.js')
+    script(type='text/javascript', src='/javascripts/jquery.easing.1.3.js')
+    script(type='text/javascript', src='/javascripts/camera.min.js')
+    script(src='/javascripts/bootstrap.min.js')
+    script.
+        jQuery(function () {
+            jQuery('#camera_wrap_4').camera({
+                transPeriod: 500,
+                time: 3000,
+                height: '600',
+                loader: 'false',
+                pagination: true,
+                thumbnails: false,
+                hover: false,
+                playPause: false,
+                navigation: false,
+                opacityOnGrid: false,
+                imagePath: '/images/'
+            });
+        });
